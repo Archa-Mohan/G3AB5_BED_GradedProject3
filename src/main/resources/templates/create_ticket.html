@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Ticket Tracker Application</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" th:href="@{/}">Ticket Tracker Application</a>
+
+		<!-- Toggler/collapsible Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/}">Tickets
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{/newTickets}">New Ticket</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+
+	<div class="container ">
+		<div class="row">
+			<div
+				class="col-lg-10 col-md-10 col-sm-10 container justify-content-center card">
+				<h1 class="text-center">New Ticket</h1>
+				<div class="card-body">
+					<form th:action="@{/}" th:object="${ticket}" method="POST">
+						<div class="form-group">
+							<label>Title</label> <input type="text" name="title" required
+								th:field="*{title}" class="form-control" th:maxlength=50
+								placeholder="Enter ticket title" />
+						</div>
+						<div class="form-group">
+							<label>Short Description</label>
+							<textarea th:type="text" th:maxlength="100" th:rows="4" required
+								th:field="*{shortDescription}" class="form-control"
+								placeholder="Enter short description"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Content</label>
+							<textarea th:type="text" th:maxlength="300" th:rows="6" required
+								placeholder="Enter content" class="form-control"
+								th:field="*{content}"></textarea>
+						</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
